@@ -1,0 +1,10 @@
+Get userInput
+    Use Prompt
+
+Get computerInput
+    Create function getComputerInput which randomises computer values
+
+Compare both userInput and computerInput
+    Create getResult which compares inputs and returns the result
+
+Log the result and declare the winner
