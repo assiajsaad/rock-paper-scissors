@@ -1,7 +1,10 @@
-console.log("Welcome to Rock Paper Scissors");
 
-// let userChoice = prompt('Enter Your Choice to start the game').toLowerCase();
-// console.log(userInput);
+function getUserChoice() {
+    let userChoice = prompt('Enter Your Choice to start the game').toLowerCase();
+
+    return userChoice
+}
+
 
 function getComputerChoice (){
     let computerChoice;
@@ -33,7 +36,41 @@ function playRound (playerSelection, computerSelection) {
     return result;
 }
 
-let userChoice = prompt('Enter Your Choice to start the game').toLowerCase();
-let computerChoice = getComputerChoice();
-let result = playRound(userChoice,computerChoice);
+function playGame() {
+    let userPoints = 0;
+    let computerPoints = 0;
+    let userChoice;
+    let computerChoice;
+    let result;
+    for (let index = 0; index < 5; index++) {
+         userChoice = getUserChoice();
+         computerChoice = getComputerChoice();
+         result = getSecondWord(playRound(userChoice,computerChoice));
+        if (result == "win") {
+            userPoints++;
+        }else if(result == "lose") {
+            computerPoints++;
+        }
+    }
+    if (userPoints == computerPoints) {
+        result = `User = ${userPoints} Computer = ${computerPoints} This is Draw !`
+    } else if (userPoints <= computerPoints) {
+        result = `User = ${userPoints} Computer = ${computerPoints} Computer Wins !`
+    }else {
+        result = `User = ${userPoints} Computer = ${computerPoints} You Win !`
+    }
+    return result;
+}
+
+function getSecondWord (str){
+    let words = str.split(" ");
+    let secondWord = words[1];
+    return secondWord;
+}
+
+
+// Implementation
+console.log("Welcome to Rock Paper Scissors");
+
+let result = playGame();
 console.log(result);
