@@ -1,8 +1,8 @@
 
 function getUserChoice() {
-    let userChoice = prompt('Enter Your Choice to start the game').toLowerCase();
+    // let userChoice = prompt('Enter Your Choice to start the game').toLowerCase();
 
-    return userChoice
+    // return userChoice
 }
 
 
@@ -68,9 +68,42 @@ function getSecondWord (str){
     return secondWord;
 }
 
+function showResult (result) {
+    let divResult = document.createElement('h3')
+    divResult.textContent = result;
+    divResult.style.cssText = "";
+    
+    document.body.removeChild(document.body.lastChild);
+    document.body.appendChild(divResult)
+}
+
+let divButtons = document.querySelector('.buttons');
+
+divButtons.addEventListener('click',(e)=>{
+    let target = e.target
+    let result= ''
+
+    switch (target.id) {
+        case 'rock':
+           result = playRound(target.id,getComputerChoice());
+            showResult(result);
+            break;
+        case 'paper':
+           result = playRound(target.id,getComputerChoice());
+            showResult(result);
+            break;
+        case 'scissors':
+           result = playRound(target.id,getComputerChoice());
+            showResult(result);
+            break;
+    
+        default:
+            break;
+    }
+})
 
 // Implementation
-console.log("Welcome to Rock Paper Scissors");
+// console.log("Welcome to Rock Paper Scissors");
 
-let result = playGame();
-console.log(result);
+// let result = playGame();
+// console.log(result);
